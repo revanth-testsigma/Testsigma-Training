@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<style>
+    .navbar {
+        background-color: cadetblue;
+    }
+    .anchor{
+    margin: 6px;
+    background-color: #d9edf7;
+    border-color: #d9edf7;
+    }
+    td{
+        word-break: break-all;
+    }
+    table{
+        border-collapse: collapse;
+    }
+    
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">RevApp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#Tokens">Show Token</a>
+              </li>
+          </ul>
+          <h4 class="navbar-text text-info">
+            Hi, <span th:text ="*{userDetails}"></span> <a th:href="@{/logout}" class="btn btn-danger" style="margin-left:500px"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Logout</a>
+          </h4>
+        </div>
+      </nav>
+    <section  class="login-block" style="margin-top: 50px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <form class="md-float-material form-material" th:action="@{/dashboard/access}">
+                        <div class="auth-box card">
+                            <div class="card-block">
+                                <div th:if="${param.tokensuccess}">
+                                    <div class="alert alert-info">New access token generated successfully !</div>
+                                  </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h1 class="text-center heading">Create new token to access V1 !</h1>
+                                        
+                                    </div>
+                                </div>
+                                
+                                <br>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="basic-addon1" th:text ="*{userDetails}+'_'"></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="name" placeholder="Token Name">
+                                  </div>
+    
+                                <div class="form-group form-primary">
+                                   <input type="number" class="form-control" name="valid" placeholder="Valid (Days)">
+                                  
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+    
+                                        <input type="submit" class="btn btn-primary btn-md btn-block waves-effect text-uppercase text-center m-b-20" name="submit" value="Get token">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <div id="Tokens" class="table-responsive container-fluid">
+        <table class="table">
+          <thead class="thead">
+            <tr class="table-primary">
+                    <th>Token Name</th>
+                    <th style="width:50%;">Token</th>
+                    <th>Valid upto</th>
+                    <th>Copy</th>
+                    <th>Delete</th>
+               </tr>
+          </thead>
+          <tbody>
+              <tr  th:each="Accesstokens : ${listTokens}">
+                <td th:text="${Accesstokens.name}">Name</td>
+                <td th:text="${Accesstokens.token}">Token</td>
+                <td th:text="${Accesstokens.valid}">Valid</td>
+                <td>
+                    <a href="#" onclick="copytoken(this)">Copy</a>
+                </td>                                
+                <td>
+                    <a th:href="@{'dashboard/tokendelete/' + ${Accesstokens.id}}">Delete</a>
+                </td>            
+                </tr> 
+           
+          </tbody>
+        </table>
+                            
+        </div>
+        
+    <script>
+        function copytoken(e){
+            txt = e.parentNode.parentNode.children[1].innerHTML;
+            copy(txt);
+        }
+        function copy(txt){
+            let text = document.createElement('input');
+            text.setAttribute('type', 'text');
+            text.value = txt;
+            document.body.appendChild(text);
+            text.select();
+            document.execCommand('copy');
+            document.body.removeChild(text);
+            alert("Copied to clipboard !");
+        }
+    </script>
+</body>
+</html>

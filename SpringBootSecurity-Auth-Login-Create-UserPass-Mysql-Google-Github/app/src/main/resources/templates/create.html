@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>New Account</title>
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <section class="login-block">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form class="md-float-material form-material" th:action="@{/registration}" method="POST" th:object="${user}">
+                            <div class="auth-box card">
+                                <div class="card-block">
+                                    <div th:if="${param.success}">
+                                        <div class="alert alert-info">You've successfully registered !</div>
+                                      </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h3 class="text-center heading">Create new account</h3>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-primary">
+                                     
+                                         <input type="text" class="form-control" th:field="*{name}" value="" placeholder="Name" id="first_name"> 
+                                    </div>
+        
+                                    <div class="form-group form-primary">
+                                        <input type="text" class="form-control" th:field="*{email}" value="" placeholder="Email" id="email">
+                                       
+                                    </div>
+        
+                                    <div class="form-group form-primary">
+                                       <input type="password" class="form-control" th:field="*{password}" placeholder="Password" value="" id="password">
+                                      
+                                    </div>
+        
+                                    <div class="form-group form-primary">
+                                        <input type="password" class="form-control" placeholder="Repeat password" value="" id="password_confirm">
+                                        
+                                    </div>
+        
+        
+                                    <div class="row">
+                                        <div class="col-md-12">
+        
+                                            <input type="submit" class="btn btn-primary btn-md btn-block waves-effect text-uppercase text-center m-b-20" name="submit" value="Signup Now">
+                                           <!--  <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"><i class="fa fa-lock"></i> Signup Now </button> -->
+                                        </div>
+                                    </div>
+        
+                                    
+        
+                                        <br>
+        
+                                    <p class="text-inverse text-center">Already have an account? <a href="/"th:href="@{/login}" data-abc="true">Login</a></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>New Account</title>
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <section class="login-block">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form class="md-float-material form-material" th:action="@{/login}" method="post" 
+                        th:object="${user}">
+                            <div class="auth-box card">
+                                <div class="card-block">
+                                    <div th:if="${param.error}">
+                                        <div class="alert alert-info">Email or password entered is incorrect!</div>
+                                      </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h1 class="text-center heading">Login to your account</h1>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <br>
+                                    <div class="form-group form-primary">
+                                        <input type="text" class="form-control"  value="" th:field="*{username}" placeholder="Email" id="email">
+                                       
+                                    </div>
+        
+                                    <div class="form-group form-primary">
+                                       <input type="password" class="form-control" th:field="*{password}" placeholder="Password" value="" id="password">
+                                      
+                                    </div>
+        
+                                    
+                                    <br>
+        
+                                    <div class="row">
+                                        <div class="col-md-12">
+        
+                                            <input type="submit" class="btn btn-primary btn-md btn-block waves-effect text-uppercase text-center m-b-20" name="submit" value="Signup Now">
+                                           <!--  <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"><i class="fa fa-lock"></i> Signup Now </button> -->
+                                        </div>
+                                    </div>
+        
+                                    <div class="or-container"><div class="line-separator"></div> <div class="or-label">or</div><div class="line-separator"></div></div>
+        
+        
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                          <a class="btn btn-md btn-google btn-block text-uppercase btn-outline" th:href="@{/oauth2/authorization/google}"><img src="https://img.icons8.com/?size=32&id=17949&format=png"> Login Using Google</a>
+        
+                                        </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                              <a class="btn btn-md btn-google btn-block text-uppercase btn-outline" th:href="@{/oauth2/authorization/github}"><img src="https://img.icons8.com/?size=32&id=12599&format=png"> Login Using Github</a>
+            
+                                            </div>
+                                    </div>
+                                    <br>
+        
+                                    <p class="text-inverse text-center">Don't have an account? <a href="/" 
+                                        th:href="@{/registration}" data-abc="true">Create new</a></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

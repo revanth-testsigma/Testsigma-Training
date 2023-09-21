@@ -1,0 +1,12 @@
+create table Address(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    customer_id int NOT NULL,
+    landmark VARCHAR(150) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    state VARCHAR(50) NOT NULL,
+    pincode VARCHAR(6) NOT NULL,
+    country VARCHAR(50) NOT NULL,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES Customer(id)
+);

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Error Occured</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <section  class="login-block" style="margin-top: 50px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                        <div class="auth-box card">
+                            <div class="card-block">
+                                
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h1 class="text-center heading"><span th:text ="*{Status}"></span> Error Occured !</h1>
+                                        <br>
+                                        <span th:text ="*{Message}"></span>
+                                        <span th:text ="*{Uri}"></span>                                        
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+    
+                                        <a th:href="@{/dashboard}"><button class="btn btn-primary btn-md btn-block waves-effect text-uppercase text-center m-b-20" >Back to home</button></a>
+                                       
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

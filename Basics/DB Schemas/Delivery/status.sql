@@ -1,0 +1,8 @@
+CREATE TABLE status(                                   
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    location VARCHAR(150) NOT NULL,
+    driver_id INT,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (driver_id) REFERENCES driver(id)
+);
