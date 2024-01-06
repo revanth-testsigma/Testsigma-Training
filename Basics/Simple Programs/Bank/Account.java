@@ -62,22 +62,4 @@ public class Account{
         return (false);  
     }
 }
-class Bank {
-    private List<Account> accounts;
-
-    public Bank() {
-        accounts = new ArrayList<>();
-    }
-
-    public void addAccount(Account account) {
-        accounts.add(account);
-    }
-
-    public void deleteAccount(Account account) {
-        accounts.remove(account);
-    }
-
-    public List<Account> getAccounts() {
-        return accounts;
-    }
 }
